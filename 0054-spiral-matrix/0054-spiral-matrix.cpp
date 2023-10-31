@@ -2,7 +2,7 @@ class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
         int minr = 0, minc = 0;
-        int  maxr = matrix.size() -1;
+        int maxr = matrix.size() -1;
         int maxc = matrix[0].size() -1;
         int tne = matrix.size() * matrix[0].size();
         int count = 0;
