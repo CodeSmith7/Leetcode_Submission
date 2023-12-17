@@ -6,6 +6,7 @@ public:
         for (int i = 0; i < n; i++) {
             sumi += mat[i][i] + mat[i][n-i-1];
         }
+        //best wayto check even odd 
         if (n&1) sumi -= mat[n/2][n/2];
         return sumi; 
     }
