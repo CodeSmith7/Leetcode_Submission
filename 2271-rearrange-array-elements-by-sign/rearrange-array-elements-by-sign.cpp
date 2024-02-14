@@ -17,13 +17,13 @@ public:
             ans.push_back(neg[j++]);
         }
 
-        while (i < pos.size()) {
-            ans.push_back(pos[i++]);
-        }
+        // while (i < pos.size()) {
+        //     ans.push_back(pos[i++]);
+        // }
 
-        while (j < neg.size()) {
-            ans.push_back(neg[j++]);
-        }
+        // while (j < neg.size()) {
+        //     ans.push_back(neg[j++]);
+        // }
 
         return ans;
     }
