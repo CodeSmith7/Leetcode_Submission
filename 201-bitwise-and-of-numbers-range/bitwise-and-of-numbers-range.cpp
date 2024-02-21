@@ -8,6 +8,7 @@ public:
            right >>= 1;
            shift++;
        }       
-       return right  << shift;//left shit i.e. add zero from starting at common prefix
+       if (left ==  0) return 0; 
+       return left << shift;//left shit i.e. add zero from starting at common prefix
     }
 };
