@@ -34,14 +34,17 @@ public:
         queue<TreeNode*> que;
         que.push(root);
         while (!que.empty()) {
-            TreeNode* node = que.front();
-            que.pop();
-            ans = node->val;
-            if (node ->right ) {
-                que.push(node->right);
-            }
-            if (node -> left ) {
-                que.push(node -> left);
+            int n = que.size();
+            while (n--) {
+                TreeNode* node = que.front();
+                que.pop();
+                ans = node->val;
+                if (node ->right ) {
+                    que.push(node->right);
+                }
+                if (node -> left ) {
+                    que.push(node -> left);
+                }
             }
         }
         return ans;
