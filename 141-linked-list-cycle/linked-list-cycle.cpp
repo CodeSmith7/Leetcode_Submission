@@ -9,6 +9,8 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
+        //slow fast pointer approach 
+        // L1 = nk - L2 (that is how this approach works)
         ListNode* slow = head;
         ListNode* fast = head;
 
