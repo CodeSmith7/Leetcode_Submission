@@ -26,11 +26,33 @@ public:
 
         //approch 2 : using binarysearch
 
-        for (int &num :  nums1) {
-            if (binarySearch(nums2,num)) {
-                return num;
+        // for (int &num :  nums1) {
+        //     if (binarySearch(nums2,num)) {
+        //         return num;
+        //     }
+        // }
+        // return -1;
+
+
+        //approach 3 
+
+        int m = nums1.size();
+        int n = nums2.size();
+
+        int i = 0;
+        int j = 0;
+
+        while ( i < m && j < n) {
+            if (nums1[i] == nums2[j]) {
+                return nums1[i];
+            }
+            else if (nums1[i] < nums2[j]) {
+                i++;
+            } else {
+                j++;
             }
         }
+
         return -1;
 
 
