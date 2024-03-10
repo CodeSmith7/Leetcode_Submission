@@ -15,17 +15,32 @@ public:
 
         //approach 1 : 
 
+        // unordered_set<int> st1(nums1.begin(),nums1.end());
+
+        // unordered_set<int> st2;
+
+        // for (int &num : nums2) {
+        //     if (st1.find(num) != st1.end()) {
+        //         st2.insert(num);
+        //     }
+        // }
+
+        // vector <int> res(begin(st2),end(st2));
+        // return res;
+        
+
+        //Approach 2 :
+
         unordered_set<int> st1(nums1.begin(),nums1.end());
 
-        unordered_set<int> st2;
+        vector<int> res;
 
         for (int &num : nums2) {
             if (st1.find(num) != st1.end()) {
-                st2.insert(num);
+                res.push_back(num);
+                st1.erase(num);
             }
         }
-
-        vector <int> res(begin(st2),end(st2));
         return res;
         
     }
