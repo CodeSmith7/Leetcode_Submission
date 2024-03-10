@@ -31,17 +31,31 @@ public:
 
         //Approach 2 :
 
-        unordered_set<int> st1(nums1.begin(),nums1.end());
+        // unordered_set<int> st1(nums1.begin(),nums1.end());
 
-        vector<int> res;
+        // vector<int> res;
+
+        // for (int &num : nums2) {
+        //     if (st1.find(num) != st1.end()) {
+        //         res.push_back(num);
+        //         st1.erase(num);
+        //     }
+        // }
+        // return res;
+
+        //approch 3:
+        sort(nums1.begin(),nums1.end());
+
+        unordered_set<int> st;
 
         for (int &num : nums2) {
-            if (st1.find(num) != st1.end()) {
-                res.push_back(num);
-                st1.erase(num);
+            if (binary_search(nums1.begin(),nums1.end(),num)) {
+                st.insert(num);
             }
+
         }
-        return res;
+
+        return vector<int>(st.begin(),st.end());
         
     }
 };
