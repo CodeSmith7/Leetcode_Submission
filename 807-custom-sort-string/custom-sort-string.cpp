@@ -1,24 +1,23 @@
 class Solution {
 public:
     string customSortString(string order, string s) {
-        unordered_map <char , int > mp;
+        //unordered_map <char , int > mp;
+        int count[26] = {0};
         for (char &c : s) {
-            mp[c]++;
+            count[c-'a']++;
         }
         string ans = "";
         for (char &c : order) {
-            while (mp[c]--) {
+            while (count[c-'a']--) {
                 ans += c;
             }
         }
 
-        for (auto &[a,b] : mp) {
-                while (b > 0) {
-                    ans += a;
-                    b--;
-                }
-            
-        }
+       for (char &ch : s ) {
+           if (count [ch-'a'] > 0) {
+               ans += ch;
+           }
+       }
 
         return ans;
     }
