@@ -1,20 +1,38 @@
 class Solution {
 public:
     int maxDepth(string s) {
-        //Approach 1 -> using stack
-        stack<char> st;
+        // //Approach 1 -> using stack
+        // stack<char> st;
+        // int result = 0;
+
+        // for (char &ch : s) {
+
+        //     if (ch == '(') {
+        //         st.push(ch);
+        //     } else if (ch == ')') {
+        //         st.pop();
+        //     }
+
+        //     result = max (result, ( int )st.size()); //returns size_t
+        // }
+        // return result;
+
+        //Approach 2 : without using the stack 
+        int openBracket = 0;
         int result = 0;
 
         for (char &ch : s) {
 
             if (ch == '(') {
-                st.push(ch);
+                openBracket++;
             } else if (ch == ')') {
-                st.pop();
+                openBracket--;
             }
 
-            result = max (result, ( int )st.size()); //returns size_t
+            result = max (result, openBracket); 
         }
         return result;
+
+
     }
 };
