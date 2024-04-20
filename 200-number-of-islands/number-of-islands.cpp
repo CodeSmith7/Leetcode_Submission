@@ -27,6 +27,19 @@ public:
             }
         }
     }
+
+    void dfs (vector<vector<char>>& grid,int i ,int j) {
+        if (i < 0 || i >= grid.size() || j < 0 || j >= grid[0].size() || grid[i][j] != '1') {
+            return;
+        }
+
+        grid[i][j] = '$'; // mark visited 
+
+        dfs(grid,i+1,j);
+        dfs(grid,i-1,j);
+        dfs(grid,i,j-1);
+        dfs(grid,i,j+1);
+    }
     int numIslands(vector<vector<char>>& grid) {
         if(grid.size() == 0)
             return 0;
@@ -35,10 +48,11 @@ public:
         int n = grid[0].size();
         int count = 0;
         queue<pair<int, int>> que;
+        
         for(int i = 0; i<m; i++) {
             for(int j = 0; j<n; j++) {
                 if(grid[i][j] == '1') {
-                    bfs(grid, i, j, que);
+                    dfs(grid, i, j);
                     count++;
                 }
             }
