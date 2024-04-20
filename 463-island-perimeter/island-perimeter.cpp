@@ -63,21 +63,34 @@ public:
 
         m    = grid.size();
         n    = grid[0].size();
-        peri = 0;
+        int perimeter = 0;
         
         for(int i = 0; i < m; i++) {
             for(int j = 0; j < n; j++) {
                 
-                if(grid[i][j] == 1) {
-                    // dfs(grid, i, j);
-                    // return peri;
+                // if(grid[i][j] == 1) {
+                //     // dfs(grid, i, j);
+                //     // return peri;
 
-                    return bfs(grid,i,j);
-                }
+                //     return bfs(grid,i,j);
+                // }
+                if (grid[i][j] == 0 ) continue;
+
+                if(i-1 < 0 || grid[i-1][j] == 0) //up
+                    perimeter++;
+                
+                if(i+1 >= m || grid[i+1][j] == 0) //down
+                    perimeter++;
+                
+                if(j-1 < 0 || grid[i][j-1] == 0) //left
+                    perimeter++;
+                
+                if(j+1 >= n || grid[i][j+1] == 0) //right
+                    perimeter++;
                 
             }
         }
         
-        return -1;
+        return perimeter;
     }
 };
