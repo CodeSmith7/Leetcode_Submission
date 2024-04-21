@@ -30,7 +30,31 @@ public:
         }
         vector<bool>  visited(n,false);
 
-        return check(adj,source,destination,visited);
+        //return check(adj,source,destination,visited);
 
+        //using bfs
+
+        queue<int> que;
+        que.push(source);
+        visited[source] = true;
+
+        while (!que.empty()) {
+  
+            int node = que.front();
+            que.pop();
+            
+            if (node == destination) return true;
+
+            for ( auto &v: adj[node] ) {
+               
+                if (!visited[v] ) {
+                  
+                    que.push(v);
+                    visited[v] = true;
+
+                }
+            }
+        }
+        return false;
     }
 };
