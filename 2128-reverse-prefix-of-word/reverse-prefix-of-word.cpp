@@ -1,18 +1,20 @@
 class Solution {
 public:
     string reversePrefix(string word, char ch) {
+      
         int idx = -1;
-        int j = 0;
-        while (j < word.size()) {
-            if (word[j] == ch) {
-                idx = j;
-                break;
-            } 
-            j++;
+        // int j = 0;
+      
+        // while (j < word.size()) {
+        //     if (word[j] == ch) {
+        //         idx = j;
+        //         break;
+        //     } 
+        //     j++;
             
-        }
-
-        if (idx == -1 ) {
+        // }
+        idx = word.find(ch);
+        if (idx == string::npos ) {
             return word;
         }
 
