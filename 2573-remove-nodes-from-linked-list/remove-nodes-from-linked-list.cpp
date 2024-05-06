@@ -10,6 +10,18 @@
  */
 class Solution {
 public:
+    ListNode* reverseList(ListNode* head) {
+        if(head == NULL || head->next == NULL) {
+            return head;
+        }
+        
+        ListNode* last = reverseList(head->next);
+        head->next->next = head;
+        head->next = NULL;
+        
+        return last;
+    }    
+
     ListNode* removeNodes(ListNode* head) {
         //Approach 1 -> using stack 
         // stack<ListNode*> st;
@@ -44,21 +56,51 @@ public:
 
 
         //Approach 2 -> using reecursion 
-        if (head == NULL || head -> next == NULL) {
-            return head;
-        }
+        // if (head == NULL || head -> next == NULL) {
+        //     return head;
+        // }
  
-        ListNode* nextNode = removeNodes(head -> next );
+        // ListNode* nextNode = removeNodes(head -> next );
 
-        if (head -> val < nextNode-> val) {
-            delete head;
-            return nextNode;
-        }
+        // if (head -> val < nextNode-> val) {
+        //     delete head;
+        //     return nextNode;
+        // }
 
-        head->next = nextNode;
+        // head->next = nextNode;
         
-        return head;
+        // return head;
 
+        //Approach 3 : reverse the linked list 
 
+        head = reverseList(head);
+
+        int maximum = 0;
+        ListNode* prev = NULL;
+        ListNode* current = head;
+
+        while (current != NULL) {
+            maximum = max(maximum, current->val);
+
+            if (current->val < maximum) {
+                prev->next = current->next;
+                ListNode* deleted = current;
+                current = current->next;
+                delete(deleted);
+            }
+
+            else {
+                prev = current;
+                current = current->next;
+            }
+        }
+        
+        return reverseList(head);
+
+     
     }
+
+
+
+    
 };
