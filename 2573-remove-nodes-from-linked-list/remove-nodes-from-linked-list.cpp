@@ -12,34 +12,53 @@ class Solution {
 public:
     ListNode* removeNodes(ListNode* head) {
         //Approach 1 -> using stack 
-        stack<ListNode*> st;
-        ListNode* curr = head;
+        // stack<ListNode*> st;
+        // ListNode* curr = head;
 
-        while (curr != NULL) {
-            st.push(curr);
-            curr = curr -> next;            
-        }
+        // while (curr != NULL) {
+        //     st.push(curr);
+        //     curr = curr -> next;            
+        // }
 
-        curr = st.top();
-        st.pop();
-        int maxNode = curr->val;
+        // curr = st.top();
+        // st.pop();
+        // int maxNode = curr->val;
 
-        ListNode* resultHead = new ListNode(curr->val);
+        // ListNode* resultHead = new ListNode(curr->val);
 
-        while (!st.empty()) {
+        // while (!st.empty()) {
              
-            curr = st.top();
-            st.pop();
+        //     curr = st.top();
+        //     st.pop();
 
-            if (curr->val < maxNode) {
-                continue;
-            } else {
-                ListNode* newNode = new ListNode (curr->val);
-                newNode-> next = resultHead;
-                resultHead = newNode;
-                maxNode = curr->val;
-            }
+        //     if (curr->val < maxNode) {
+        //         continue;
+        //     } else {
+        //         ListNode* newNode = new ListNode (curr->val);
+        //         newNode-> next = resultHead;
+        //         resultHead = newNode;
+        //         maxNode = curr->val;
+        //     }
+        // }
+        // return resultHead;
+
+
+        //Approach 2 -> using reecursion 
+        if (head == NULL || head -> next == NULL) {
+            return head;
         }
-        return resultHead;
+ 
+        ListNode* nextNode = removeNodes(head -> next );
+
+        if (head -> val < nextNode-> val) {
+            delete head;
+            return nextNode;
+        }
+
+        head->next = nextNode;
+        
+        return head;
+
+
     }
 };
