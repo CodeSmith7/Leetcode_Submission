@@ -39,7 +39,7 @@ public:
         int score = 0;
         for (int i = 0 ; i < m;i++) {
             for (int j = 0; j < n;j++) {
-                score += grid[i][j] * pow(2,n-j-1);  //grid[i][j] << (n-j-1)
+                score += (grid[i][j] << (n-j-1));  //grid[i][j] << (n-j-1)
             }
         }
 
