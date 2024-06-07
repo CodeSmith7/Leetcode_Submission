@@ -25,8 +25,8 @@ public:
             result += findRoot(word, st) + " ";
         }
 
-        result.pop_back();
-        return result;
+        //result.pop_back();
+        return result.substr(0,result.size()-1);
 
     }
 };
