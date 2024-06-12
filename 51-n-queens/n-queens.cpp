@@ -101,7 +101,7 @@ public:
         vector<string> board(n,string(n,'.'));
         
 
-        solve (board,0);
+        solve2 (board,0);
 
         return result;
     }
