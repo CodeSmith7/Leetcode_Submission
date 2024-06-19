@@ -1,4 +1,4 @@
-//Approach 1: using rexursuon memoization
+//Approach 1: using recursuon memoization
 
 // class Solution {
 // public:
@@ -25,12 +25,35 @@
 //     }
 // };
 
-//Approach 2: ung bottom up 
+//Approach 2: ung bottom up (tabulation)
 
 class Solution {
 public:
     
-   
+    void printLCS(string s1,string s2, vector<vector<int> > &t,int m, int n) {
+        string ans = "";
+        int i = m;
+        int j = n;
+
+        while ( i > 0 && j > 0) {
+            if (s1[i-1] == s2[j-1]) {
+                ans.push_back(s1[i-1]);
+                i--;
+                j--; //move diagonally 
+            }
+            else {
+                if (t[i-1][j] > t[i][j-1]) {
+                    i--;
+                } else {
+                    j--;
+                }
+
+            }
+        }
+        reverse(begin(ans),end(ans));
+        cout << "LCS -> " << ans << endl;
+
+    }
     int longestCommonSubsequence(string s1, string s2) {
         int m = s1.length();
         int n = s2.length();
@@ -53,6 +76,7 @@ public:
                 }
             }
         }
+        printLCS(s1,s2,t,m,n);
         return t[m][n];
     }
 };
