@@ -6,7 +6,7 @@ public:
     for (auto x  : nums1) {
         mp[x]++;
     }
-
+    //acha tareeka hai 
     for (auto x : nums2) {
         auto it = mp.find(x);
         if (it != mp.end() && it->second > 0) {
