@@ -1,6 +1,7 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
+    
         unordered_map<int,int> mp;
 
         int result = 0;
@@ -20,4 +21,8 @@ public:
 
         return result;
     }
+
+        
+
+       
 };
