@@ -8,7 +8,6 @@ public:
     }
     int findTheWinner(int n, int k) {
         int y = solve(n,k) + 1;
-       
         return y;    
     }
 };
