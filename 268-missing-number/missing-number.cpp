@@ -1,11 +1,15 @@
 class Solution {
 public:
+
     int missingNumber(vector<int>& nums) {
 
-        int ans =0 ;
+        int ans =  (nums.size() * (nums.size() +1))/2 ;
         for (auto x: nums)
-           ans += x;
+           ans -= x;
 
-         return  (nums.size() * (nums.size() +1))/2  - ans;
+         return ans;
     }
+
+
+
 };
