@@ -1,3 +1,25 @@
+//Approach 1 : using stack
+class Solution {
+public:
+    int minimumDeletions(string s) {
+        
+        int n = s.size();
+        stack<char> st;
+        int ans = 0;
+
+        for (int i = 0; i < n ;i++) {
+
+            if (!st.empty() && s[i] =='a' && st.top() == 'b') {
+                st.pop();
+                ans++;
+            } else {
+                st.push(s[i]);
+            }
+        }
+        
+        return ans;
+    }
+};
 //Approch 2 : 
 // class Solution {
 // public:
@@ -34,33 +56,33 @@
 // };
 
 //Approch 3 : using constant space 
-class Solution {
-public:
-    int minimumDeletions(string s) {
-        int ans = INT_MAX;
-        int n = s.length();
-        int countB = 0;
-        int countA = 0;
+// class Solution {
+// public:
+//     int minimumDeletions(string s) {
+//         int ans = INT_MAX;
+//         int n = s.length();
+//         int countB = 0;
+//         int countA = 0;
 
-        for (char &ch : s) {
-            if (ch == 'a') {
-                countA++;
-            }
-        }
+//         for (char &ch : s) {
+//             if (ch == 'a') {
+//                 countA++;
+//             }
+//         }
 
-        for (int i = 0; i < n;i++) {
+//         for (int i = 0; i < n;i++) {
          
-            if (s[i] == 'a') {
-                countA--;
-            }
+//             if (s[i] == 'a') {
+//                 countA--;
+//             }
          
-            ans = min(ans,countA+countB);
+//             ans = min(ans,countA+countB);
          
-            if (s[i] == 'b') {
-                countB++;
-            }
-        }
+//             if (s[i] == 'b') {
+//                 countB++;
+//             }
+//         }
 
-        return ans;
-    }
-};
+//         return ans;
+//     }
+// };
